@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "allowJs": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "/*": [
+        "./*"
+      ],
+      "meteor/mongo": [
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/local_collection_driver.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/collection.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/connection_options.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/doc_fetcher.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/mongo_driver.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/mongo_utils.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/observe_multiplex.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/oplog_observe_driver.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/oplog_tailing.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/oplog_v2_converter.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/polling_observe_driver.js",
+        "/home/marcus-moreira/.meteor/packages/mongo/1.16.6/web.browser/remote_collection_driver.js"
+      ],
+      "meteor/reactive-var": [
+        "/home/marcus-moreira/.meteor/packages/reactive-var/1.0.12/web.browser/reactive-var.js"
+      ],
+      "meteor/es5-shim": [
+        "/home/marcus-moreira/.meteor/packages/es5-shim/4.8.0/web.browser/client.js",
+        "/home/marcus-moreira/.meteor/packages/es5-shim/4.8.0/web.browser/console.js",
+        "/home/marcus-moreira/.meteor/packages/es5-shim/4.8.0/web.browser/cordova.js",
+        "/home/marcus-moreira/.meteor/packages/es5-shim/4.8.0/web.browser/export_globals.js",
+        "/home/marcus-moreira/.meteor/packages/es5-shim/4.8.0/web.browser/import_globals.js"
+      ],
+      "meteor/ecmascript": [
+        "/home/marcus-moreira/.meteor/packages/ecmascript/0.16.7/web.browser/ecmascript.js"
+      ],
+      "meteor/shell-server": [
+        "/home/marcus-moreira/.meteor/packages/shell-server/0.5.0/web.browser/main.js",
+        "/home/marcus-moreira/.meteor/packages/shell-server/0.5.0/web.browser/shell-server.js"
+      ],
+      "meteor/react-meteor-data": [
+        "/home/marcus-moreira/.meteor/packages/react-meteor-data/2.7.2/web.browser/index.js",
+        "/home/marcus-moreira/.meteor/packages/react-meteor-data/2.7.2/web.browser/suspense/index.js"
+      ],
+      "meteor/hot-module-replacement": [
+        "/home/marcus-moreira/.meteor/packages/hot-module-replacement/0.5.3/web.browser/hot-api.js",
+        "/home/marcus-moreira/.meteor/packages/hot-module-replacement/0.5.3/web.browser/client.js",
+        "/home/marcus-moreira/.meteor/packages/hot-module-replacement/0.5.3/web.browser/server.js"
+      ]
+    }
+  },
+  "typeAcquisition": {
+    "include": [
+      "meteor"
+    ]
+  },
+  "exclude": [
+    "node_modules",
+    ".meteor"
+  ]
+}
