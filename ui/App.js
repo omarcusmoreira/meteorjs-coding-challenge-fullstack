@@ -7,6 +7,7 @@ import { People } from '/people/people';
 import { Communities } from '/communities/communities';
 import { useTracker } from 'meteor/react-meteor-data';
 import { Box, HStack, Heading, VStack, Divider } from '@chakra-ui/react';
+import { Meteor } from 'meteor/meteor';
 
 export function App() {
   const [selectedCommunityId, setSelectedCommunityId] = useState('');
@@ -39,18 +40,18 @@ export function App() {
   };
 
   return (
-    <VStack h="100vh" w='100%' gap={0}>
+    <VStack h="100vh" w="100%" gap={0}>
 
-      <HStack 
-        gridColumn="span 2" 
-        w='100%' 
-        p={4} 
-        backgroundColor="teal.500" 
-        alignItems='flex-start'
+      <HStack
+        gridColumn="span 2"
+        w="100%"
+        p={4}
+        backgroundColor="teal.500"
+        alignItems="flex-start"
         gap={4}
       >
-        
-        <VStack display='flex' alignItems='flex-start' h={28}>
+
+        <VStack display="flex" alignItems="flex-start" h={28}>
           <Heading w={72}>{Texts.HOME_TITLE}</Heading>
           <EventSelector
             communities={communities}
@@ -58,11 +59,11 @@ export function App() {
             onEventChange={handleCommunityChange}
           />
         </VStack>
-        <Divider orientation='vertical' size='xl'/>
+        <Divider orientation="vertical" size="xl"/>
         <Summary people={communityPeople} community={community} />
       </HStack>
 
-      <Box overflowY="auto" bg="teal.200" p={4} w='100%' h='100vh'>
+      <Box overflowY="auto" bg="teal.200" p={4} w="100%" h="100vh">
         {communityPeople.length !== 0 ? (
           <PeopleList
             people={communityPeople}
@@ -70,7 +71,14 @@ export function App() {
             handleCheckOut={handleCheckOut}
           />
         ) : (
-          <Box w='100%' display='flex' justifyContent='center' alignItems='center'>{Texts.HOME_NO_EVENT_SELECTED}</Box>
+          <Box
+            w="100%"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+          >
+              {Texts.HOME_NO_EVENT_SELECTED}
+          </Box>
         )}
       </Box>
     </VStack>

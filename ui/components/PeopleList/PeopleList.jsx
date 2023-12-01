@@ -13,31 +13,37 @@ import {
 } from '@chakra-ui/react'
 
 const PeopleList = ({ people, handleCheckIn, handleCheckOut }) => {
-  console.log('first render')
 
   const [updatedPeople, setUpdatedPeople] = useState([]);
 
   useEffect(()=>{
-    console.log('effect render')
     setUpdatedPeople(people)
   }, [people])
 
+
   const handleCheckInClick = (personId) => {
-    handleCheckIn(personId);
-    const updatedPeopleList = updatedPeople.map(person => {
-      if (person._id === personId) {
-        return { ...person, checkedIn: true, checkInDate: new Date().toLocaleString() };
-      }
-      return person;
-    });
-    setTimeout(() => setUpdatedPeople(updatedPeopleList), 5000)
-    };
+    
+    handleCheckIn(personId)
+    setTimeout(() =>  setUpdatedPeople((prevPeople) => {
+      const updatedPeopleList = prevPeople.map((person) => {
+        if (person._id === personId) {
+          return {
+            ...person,
+            checkedIn: true,
+            checkInDate: new Date().toLocaleString(),
+          };
+        }
+        return person;
+      });
+      return updatedPeopleList;
+    }), 5000)
+  };
 
   const handleCheckOutClick = (personId) => {
     handleCheckOut(personId);
     const updatedPeopleList = updatedPeople.map(person => {
       if (person._id === personId) {
-        return { ...person, checkedIn: false, checkOutDate: new Date() };
+        return { ...person, checkedIn: false, checkOutDate: new Date().toLocaleString() };
       }
       return person;
     });
@@ -69,12 +75,12 @@ const PeopleList = ({ people, handleCheckIn, handleCheckOut }) => {
             </Thead>
             <Tbody>
             {updatedPeople.map(person => (
-              <Tr h={16}>
+              <Tr h={16} key={person._id}>
                 <Td>{`${person.firstName} ${person.lastName}`}</Td>
                 <Td>{elipsis(person.title) ?? '-' }</Td>
                 <Td>{elipsis(person.companyName) ?? '-'}</Td>
-                <Td>{person.checkInDate ? new Date(person.checkInDate).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }) : 'Not checked in'}</Td>
-                <Td>{person.checkOutDate ? new Date(person.checkOutDate).toLocaleString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' }) : 'Not checked out'}</Td>
+                <Td>{person.checkInDate ?? 'Not checked in'}</Td>
+                <Td>{person.checkOutDate ?? 'Not checked out'}</Td>
                 <Td>
                   <VStack alignItems='flex-start' h={16}>
                     <Button
@@ -85,15 +91,14 @@ const PeopleList = ({ people, handleCheckIn, handleCheckOut }) => {
                       >
                       Check-in {`${person.firstName} ${person.lastName}`}
                     </Button>
-                    {person.checkedIn && Date.now() - new Date(person.checkInDate).getTime() > 5000 && (
-                      <Button 
+                    <Button 
                       onClick={() => handleCheckOutClick(person._id)}
                       size="xs"
                       colorScheme='red'
-                      >
-                        Check-out {`${person.firstName} ${person.lastName}`}
-                      </Button>
-                    )}
+                      isDisabled={!person.checkedIn}
+                    >
+                      Check-out {`${person.firstName} ${person.lastName}`}
+                    </Button>
                   </VStack>
                 </Td>
               </Tr>
